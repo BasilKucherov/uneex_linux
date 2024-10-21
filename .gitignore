@@ -1,1 +1,4 @@
 .venv
+*_lec/
+
+.DS_Store
