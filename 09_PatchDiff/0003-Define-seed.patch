@@ -1,0 +1,33 @@
+--- lab3.c	2024-11-22 22:09:36.222799898 +0300
++++ lab4.c	2024-11-22 22:10:36.633766581 +0300
+@@ -64,22 +64,23 @@
+ }
+ 
+ int main(int argc, char **argv) {
+-  if (argc != 3 || strlen(argv[1]) != 2 || argv[1][0] == argv[1][1]) {
+-    fprintf(stderr, "Usage: %s <'wr'> <rooms_number>\n", argv[0]);
++  if (argc != 4 || strlen(argv[2]) != 2 || argv[2][0] == argv[2][1]) {
++    fprintf(stderr, "Usage: %s <seed> <'wr'> <rooms_number>\n", argv[0]);
+     return 1;
+   }
+ 
+-  const char wall = argv[1][0];
+-  const char space = argv[1][1];
++  srand(atoi(argv[1]));
+ 
+-  const int rooms_number = atoi(argv[2]);
++  const char wall = argv[2][0];
++  const char space = argv[2][1];
++
++  const int rooms_number = atoi(argv[3]);
+ 
+   if (rooms_number < 1) {
+     fprintf(stderr, "Rooms number must be greater than 0\n");
+     return 1;
+   }
+ 
+-  srand(time(NULL));
+   generate_maze(rooms_number, wall, space);
+   return 0;
+ }
+\ No newline at end of file

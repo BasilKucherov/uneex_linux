@@ -1,0 +1,48 @@
+--- lab2.c	2024-11-22 22:03:20.599208848 +0300
++++ lab3.c	2024-11-22 22:09:04.694120956 +0300
+@@ -33,7 +33,7 @@
+   }
+ }
+ 
+-void generate_maze(int rooms_number) {
++void generate_maze(int rooms_number, char wall, char space) {
+   int oneSideLength;
+   for (oneSideLength = sqrt(rooms_number); oneSideLength > 0; oneSideLength--) {
+     if ((rooms_number / oneSideLength) * oneSideLength == rooms_number) {
+@@ -45,8 +45,6 @@
+   const int height = rooms_number / width;
+   const int totalWidth = width * 2 + 1;
+   const int totalHeight = height * 2 + 1;
+-  const char wall = '#';
+-  const char space = '.';
+ 
+   char maze[totalHeight * totalWidth];
+   memset(maze, wall, totalHeight * totalWidth);
+@@ -66,12 +64,15 @@
+ }
+ 
+ int main(int argc, char **argv) {
+-  if (argc != 2) {
+-    fprintf(stderr, "Usage: %s <rooms_number>\n", argv[0]);
++  if (argc != 3 || strlen(argv[1]) != 2 || argv[1][0] == argv[1][1]) {
++    fprintf(stderr, "Usage: %s <'wr'> <rooms_number>\n", argv[0]);
+     return 1;
+   }
+ 
+-  const int rooms_number = atoi(argv[1]);
++  const char wall = argv[1][0];
++  const char space = argv[1][1];
++
++  const int rooms_number = atoi(argv[2]);
+ 
+   if (rooms_number < 1) {
+     fprintf(stderr, "Rooms number must be greater than 0\n");
+@@ -79,6 +80,6 @@
+   }
+ 
+   srand(time(NULL));
+-  generate_maze(rooms_number);
++  generate_maze(rooms_number, wall, space);
+   return 0;
+ }
+\ No newline at end of file

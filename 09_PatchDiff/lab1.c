@@ -32,7 +32,7 @@ void make_route(int cx, int cy, char *maze, int totalWidth, int totalHeight,
   }
 }
 
-void generate_maze(void) {
+void generate_maze() {
   const int width = 6;
   const int height = 6;
   const int totalWidth = width * 2 + 1;

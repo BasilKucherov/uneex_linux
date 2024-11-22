@@ -1,0 +1,51 @@
+--- lab1.c	2024-11-22 21:55:34.833197039 +0300
++++ lab2.c	2024-11-22 22:01:58.082259710 +0300
+@@ -1,3 +1,4 @@
++#include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -32,9 +33,16 @@
+   }
+ }
+ 
+-void generate_maze() {
+-  const int width = 6;
+-  const int height = 6;
++void generate_maze(int rooms_number) {
++  int oneSideLength;
++  for (oneSideLength = sqrt(rooms_number); oneSideLength > 0; oneSideLength--) {
++    if ((rooms_number / oneSideLength) * oneSideLength == rooms_number) {
++      break;
++    }
++  }
++
++  const int width = oneSideLength;
++  const int height = rooms_number / width;
+   const int totalWidth = width * 2 + 1;
+   const int totalHeight = height * 2 + 1;
+   const char wall = '#';
+@@ -57,8 +65,20 @@
+   }
+ }
+ 
+-int main(void) {
++int main(int argc, char **argv) {
++  if (argc != 2) {
++    fprintf(stderr, "Usage: %s <rooms_number>\n", argv[0]);
++    return 1;
++  }
++
++  const int rooms_number = atoi(argv[1]);
++
++  if (rooms_number < 1) {
++    fprintf(stderr, "Rooms number must be greater than 0\n");
++    return 1;
++  }
++
+   srand(time(NULL));
+-  generate_maze();
++  generate_maze(rooms_number);
+   return 0;
+ }
+\ No newline at end of file
