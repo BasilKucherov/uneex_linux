@@ -37,7 +37,7 @@ void buf_setup_3() {
 
 #test size_capacity_clear_not_free
 	ck_assert_int_eq(buf_size(buf), 0);
-	ck_assert_int_ne(buf, 0);
+	ck_assert_ptr_ne(buf, NULL);
 
 #tcase CapacityClearFree
 
@@ -50,7 +50,7 @@ void buf_setup_4() {
 
 #test size_capacity_clear_free
 	ck_assert_int_eq(buf_size(buf), 0);
-	ck_assert_int_eq(buf, 0);
+	ck_assert_ptr_eq(buf, NULL);
 
 #tcase CapacityClearNull
 void buf_setup_5() {
@@ -58,7 +58,7 @@ void buf_setup_5() {
 }
 #test size_capacity_clear_null
 	ck_assert_int_eq(buf_size(buf), 0);
-	ck_assert_int_eq(buf, 0);
+	ck_assert_ptr_eq(buf, NULL);
 
 
 #suite PushPop
