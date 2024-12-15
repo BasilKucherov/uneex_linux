@@ -4,12 +4,15 @@
 AC_PREREQ([2.71])
 AC_INIT([temperature_converter], [0.1], [basilkucherov@gmail.com])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_REQUIRE_VERSION(0.21)
 LT_INIT([disable-static])
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CC
+IT_PROG_INTLTOOL
 
 # Joint pkgconfig library/include tests
 PKG_CHECK_MODULES([CHECK],[check])
@@ -32,7 +35,7 @@ AC_CHECK_FUNCS([strcspn])
 
 # Configure Doxygen
 
-AC_CONFIG_FILES([
+AC_CONFIG_FILES([ po/Makefile.in
     Makefile
     src/Makefile
     tests/Makefile

@@ -2,21 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <libgen.h>
+#include <libintl.h>
+#include <locale.h>
+
+#include "config.h"
 
 #define BUFFER_SIZE 100
+#define _(STRING) gettext(STRING)
 
 int main() {
+	setlocale (LC_ALL, "");
+	bindtextdomain (PACKAGE, LOCALE_PATH);
+	textdomain (PACKAGE);
+
   char input[BUFFER_SIZE];
   double value;
   char unit;
   double celsius, kelvin, fahrenheit;
 
   while (1) {
-    printf("Input temperature (e.g., 23.5C, 300K, 98.6F): ");
+    printf(_("Input temperature (e.g., 23.5C, 300K, 98.6F): "));
 
     if (fgets(input, BUFFER_SIZE, stdin) == NULL) {
       if (feof(stdin)) {
-        printf("\nExiting...\n");
+        printf(_("\nExiting...\n"));
         break;
       }
       continue;
@@ -25,8 +35,7 @@ int main() {
     input[strcspn(input, "\n")] = 0;
 
     if (sscanf(input, "%lf%c", &value, &unit) != 2) {
-      printf(
-          "Invalid input format. Please use number followed by C, K, or F\n");
+      printf(_("Invalid input format. Please use number followed by C, K, or F\n"));
       continue;
     }
 
@@ -49,7 +58,7 @@ int main() {
       kelvin = celsius_to_kelvin(celsius);
       break;
     default:
-      printf("Invalid input: %c is unknown unit. Please use C, K, or F\n",
+      printf(_("Invalid input: %c is unknown unit. Please use C, K, or F\n"),
              unit);
       continue;
     }
@@ -57,16 +66,14 @@ int main() {
     char *unit_name = unit_to_string(unit_enum);
 
     if (unit_enum != CELSIUS) {
-      printf("%.2f %s is %.2f Celsius\n", value, unit_name, celsius);
+      printf(_("%.2f %s is %.2f Celsius\n"), value, unit_name, celsius);
     }
     if (unit_enum != KELVIN) {
-      printf("%.2f %s is %.2f Kelvins\n", value, unit_name, kelvin);
+      printf(_("%.2f %s is %.2f Kelvins\n"), value, unit_name, kelvin);
     }
     if (unit_enum != FAHRENHEIT) {
-      printf("%.2f %s is %.2f Fahrenheit\n", value, unit_name, fahrenheit);
+      printf(_("%.2f %s is %.2f Fahrenheit\n"), value, unit_name, fahrenheit);
     }
-
-    printf("\n");
   }
 
   return 0;

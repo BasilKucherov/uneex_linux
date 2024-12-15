@@ -1,4 +1,6 @@
-CFLAGS = -ansi -pedantic -Wall -Wextra
+AM_CFLAGS=-D'LOCALE_PATH="$(localedir)"'
+
+CFLAGS = -std=c99 -pedantic -Wall -Wextra
 if COND_GCOV
 CFLAGS += -O0 -g -fprofile-arcs -ftest-coverage
 else

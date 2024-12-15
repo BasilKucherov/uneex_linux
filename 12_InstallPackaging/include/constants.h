@@ -3,4 +3,4 @@
 
 #define ABSOLUTE_ZERO_CELSIUS -273.15
 
-#endif // CONSTANTS_H
+#endif

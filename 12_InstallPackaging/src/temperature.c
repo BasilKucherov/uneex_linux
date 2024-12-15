@@ -1,16 +1,20 @@
 #include "../include/temperature.h"
 #include "../include/constants.h"
 
+#include <libintl.h>
+
+#define _(STRING) gettext(STRING)
+
 char *unit_to_string(enum Unit unit) {
   switch (unit) {
   case CELSIUS:
-    return "Celsius";
+    return _("Celsius");
   case KELVIN:
-    return "Kelvin";
+    return _("Kelvin");
   case FAHRENHEIT:
-    return "Fahrenheit";
+    return _("Fahrenheit");
   default:
-    return "Unknown";
+    return _("Unknown");
   }
 }
 

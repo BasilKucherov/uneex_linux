@@ -10,4 +10,4 @@ double kelvin_to_celsius(double kelvin);
 double fahrenheit_to_celsius(double fahrenheit);
 double celsius_to_fahrenheit(double celsius);
 
-#endif // TEMPERATURE_H
+#endif
