@@ -1,3 +1,25 @@
+/** @mainpage Temperature conversion program
+ * @copydetails program
+ */
+/** @page program Temperature conversion program
+ * This is free and unencumbered software released into the public domain.
+ *
+ * The program runs in a loop, accepting temperature inputs in the
+ * format "VALUE UNIT" (e.g., "23.5C") and displays the conversion
+ * results in other temperature scales.
+*/
+
+
+/** @file main.c
+ * @brief Temperature conversion program
+ * @author Basil Kucherov
+ * @date 2024-12-15
+ *
+ * This program allows users to convert temperatures between
+ * Celsius, Kelvin, and Fahrenheit scales. It provides an
+ * interactive command-line interface for temperature conversion.
+ */
+
 #include "../include/temperature.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +33,14 @@
 #define BUFFER_SIZE 100
 #define _(STRING) gettext(STRING)
 
+/**
+ * @brief Main entry point of the temperature conversion program
+ * @return 0 on successful execution
+ *
+ * The program runs in a loop, accepting temperature inputs in the
+ * format "VALUE UNIT" (e.g., "23.5C") and displays the conversion
+ * results in other temperature scales.
+ */
 int main() {
 	setlocale (LC_ALL, "");
 	bindtextdomain (PACKAGE, LOCALE_PATH);

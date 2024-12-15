@@ -4,6 +4,12 @@
 AC_PREREQ([2.71])
 AC_INIT([temperature_converter], [0.1], [basilkucherov@gmail.com])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
+
+DX_HTML_FEATURE(ON)
+DX_PDF_FEATURE(OFF)
+DX_PS_FEATURE(OFF)
+DX_INIT_DOXYGEN([temperature_converter])
+
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_REQUIRE_VERSION(0.21)
 LT_INIT([disable-static])
@@ -39,6 +45,7 @@ AC_CONFIG_FILES([ po/Makefile.in
     Makefile
     src/Makefile
     tests/Makefile
+	Doxyfile
 ])
 
 AC_OUTPUT
