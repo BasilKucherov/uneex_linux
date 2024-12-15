@@ -1,0 +1,6 @@
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+#define ABSOLUTE_ZERO_CELSIUS -273.15
+
+#endif // CONSTANTS_H
