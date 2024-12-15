@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 LDFLAGS = -lncurses
 
-TARGET = show
+TARGET = Show
 SRCS = Show.c
 OBJS = $(SRCS:.c=.o)
 
